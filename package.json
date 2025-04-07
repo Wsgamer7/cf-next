@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "pnpm run prisma:migrate && opennextjs-cloudflare && wrangler deploy",
+    "deploy": "opennextjs-cloudflare && wrangler deploy",
     "preview": "opennextjs-cloudflare && wrangler dev",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
