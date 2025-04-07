@@ -4,19 +4,26 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prisma:generate": "pnpm dlx prisma generate",
+    "prisma:studio": "pnpm dlx prisma studio",
+    "prisma:migrate-dev": "pnpm dlx prisma migrate dev",
+    "prisma:migrate": "pnpm dlx prisma migrate deploy",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "opennextjs-cloudflare && wrangler deploy",
+    "deploy": "pnpm run prisma:migrate && opennextjs-cloudflare && wrangler deploy",
     "preview": "opennextjs-cloudflare && wrangler dev",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "@prisma/adapter-neon": "^6.5.0",
+    "@prisma/client": "^6.5.0",
     "better-auth": "^1.2.5",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@prisma/client": "^6.5.0"
+    "ws": "^8.18.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250402.0",
@@ -25,9 +32,10 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/ws": "^8.18.1",
+    "prisma": "^6.5.0",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "wrangler": "^4.6.0",
-    "prisma": "^6.5.0"
+    "wrangler": "^4.6.0"
   }
 }
